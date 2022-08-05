@@ -1,0 +1,155 @@
+Sub Calcular_Comissoes()
+
+
+
+'Varredura da lista de negócios'
+Dim x As Integer
+' Set numrows = number of rows of data.
+NumRows = ActiveWorkbook.Worksheets("deals list").Range("A3", Range("A3").End(xlDown)).Rows.Count
+' Select cell a1.
+ActiveWorkbook.Worksheets("deals list").Range("A2").Select
+' Establish "For" loop to loop "numrows" number of times.
+For x = 1 To NumRows
+    
+    
+   'Cálculo da Comissão dos Representante'
+   
+   If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 27) = "A" Then           'Modalidade A'
+        
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = 0
+    
+        If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Bronze" Then 'Modalidade A - Bronze'
+            
+            If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 101 Then   'Modalidade A - Bronze - Faixa 1'
+                
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(2, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 201 Then   'Modalidade A - Bronze - Faixa 2'
+    
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(3, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            Else                                                                   'Modalidade A - Bronze - Faixa 3'
+   
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(4, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            End If
+        
+        ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Prata" Then 'Modalidade A - Prata'
+            
+            If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 101 Then   'Modalidade A - Prata - Faixa 1'
+                
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(5, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 201 Then   'Modalidade A - Prata - Faixa 2'
+    
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(6, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            Else                                                                   'Modalidade A - Prata - Faixa 3'
+   
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(7, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            End If
+            
+        ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Ouro" Then 'Modalidade A - Ouro'
+            
+            If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 101 Then   'Modalidade A - Ouro - Faixa 1'
+                
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(8, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8) < 201 Then   'Modalidade A - Ouro - Faixa 2'
+    
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(9, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            Else                                                                   'Modalidade A - Ouro - Faixa 3'
+   
+                ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(10, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            
+            End If
+        
+        Else
+        
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = "Representante s/ nível declarado"
+            
+        End If
+      
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 27) = "B" Then           'Modalidade B'
+    
+    
+        If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Bronze" Then 'Modalidade B - Bronze'
+            
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(11, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 11).Value = ActiveWorkbook.Worksheets("basis").Cells(11, 6) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+        
+        ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Prata" Then 'Modalidade B - Prata'
+            
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(12, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 11).Value = ActiveWorkbook.Worksheets("basis").Cells(12, 6) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+                
+        ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 28) = "Ouro" Then 'Modalidade B - Ouro'
+            
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = ActiveWorkbook.Worksheets("basis").Cells(13, 5) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 11).Value = ActiveWorkbook.Worksheets("basis").Cells(13, 6) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+        
+        Else
+        
+            ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = "Representante s/ nível declarado"
+
+            
+        End If
+    
+    Else
+        
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 10).Value = 0
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 11).Value = 0
+    
+      
+    End If
+    
+    
+    'Cálculo da Comissão dos Executivos'
+    
+    If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "Executivo" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(3, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+   
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "SDR Rodrigo" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(4, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+    
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "SDR Giovana" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(4, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+    
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "Sócios" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(6, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+    
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "[CS] Executivo" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(7, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+     
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "[CS] Sócios" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(8, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+    
+    Else
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 14).Value = ActiveWorkbook.Worksheets("basis").Cells(5, 8) * ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 8)
+        
+    End If
+    
+    'Cálculo da Comissão do SDR'
+    
+    If ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "SDR Rodrigo" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 15).Value = ActiveWorkbook.Worksheets("basis").Cells(3, 12)
+    ElseIf ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 3) = "SDR Giovana" Then
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 15).Value = ActiveWorkbook.Worksheets("basis").Cells(3, 12)
+    Else
+        ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 15).Value = 0
+    End If
+    
+    ActiveWorkbook.Worksheets("deals list").Range(Cells(x + 2, 27), Cells(x + 2, 30)).Copy
+    ActiveWorkbook.Worksheets("deals list").Range(Cells(x + 2, 27), Cells(x + 2, 30)).PasteSpecial Paste:=xlPasteValues
+    
+   ' Selects cell down 1 row from active cell.
+   'ActiveWorkbook.Worksheets("deals list").Cells(1, 1).Select'
+Next
+ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 2).Copy
+ActiveWorkbook.Worksheets("deals list").Cells(x + 2, 2).PasteSpecial Paste:=xlPasteValues
+
+SendKeys "{ESC}"
+
+End Sub
